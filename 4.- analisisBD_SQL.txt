@@ -1,0 +1,26 @@
+CREATE DATABASE PruebaBD
+USE PruebaBD
+
+Create Table Usuario(
+	id int identity(1,1) not null primary key,
+	Nombre varchar(50) not null, 
+	Edad int not null,
+	Email varchar(50) not null
+)
+
+CREATE PROC nuevoUsuario(
+@Nombre as varchar(50),
+@Edad as int,
+@Email as varchar(50)
+)
+as
+BEGIN
+	INSERT INTO Usuario VALUES(@Nombre, @Edad, @Email)
+END
+
+EXEC nuevoUsuario 'JAVIER',26,'ing.luis.vazquez.e@outlook.com'
+
+
+--------
+scaffold-DbContext "Server=ARKADY;Database=PruebaBD;User Id=sa;Password=Tryxter69;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models/Models -ContextDir Models/Context -Context SecContext -Force
+--------
